@@ -7,17 +7,22 @@ int main(){
 	int j=1;
 	while(j<=t){
 		cin>>numwalls;
-		int height[numwalls],high=0,low=0;
-		for(int i=0;i<numwalls;i++){
-			cin>>height[i];
-		}
-		for(int i=0;i<numwalls-1;i++){
-			if(height[i]<height[i+1])
-				high++;
-			else if(height[i]>height[i+1])
-				low++;
-			else
-				continue;
+		int height,temp=0,high=0,low=0;
+		while(numwalls--){
+			cin>>height;
+			cout<<endl;
+			if(numwalls==0)
+				temp=height;
+			else{
+				if(height>temp){
+					high++;
+					temp=height;
+				}
+				else if(height<temp){
+					low++;
+					temp=height;
+				}
+			}
 		}
 		cout<<"Case "<<j<<": "<<high<<" "<<low<<endl;
 		j++;

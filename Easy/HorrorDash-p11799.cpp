@@ -8,7 +8,6 @@ int main(){
 		int stu;
 		cin>>stu;
 		int speed[stu]={0},maxspeed=0;
-
 		for(int i =0;i<stu;i++)
 			cin>>speed[i];
 		for(int i=0;i<stu;i++){

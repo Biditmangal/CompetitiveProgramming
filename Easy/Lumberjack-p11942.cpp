@@ -2,19 +2,23 @@
 using namespace std;
 
 int main(){
-	int t,beard[10]={0};
+	int t;
+	cout<<"Lumberjacks:"<<endl;
 	cin>>t;
 	while(t--){
-		int flag[10]={0};
-		for(int i=0;i<10;i++)
-			cin>>beard[i];
-		for(int i=0;i<9;i++){
-			if(beard[i]>beard[i+1])
-				flag[i]=1;
-			if(beard[i]<beard[i+1])
-				flag[i]=2;
-		}
-		if(flag[10]==1||flag[10]==2)
+		int beard,asc=1,desc=0,temp=0;
+		for(int i=0;i<10;i++){
+			cin>>beard;		
+			if(beard>temp){
+				desc++;
+				temp=beard;
+			}
+			else if(beard<temp){
+				asc++;
+				temp=beard;
+			}
+		}	
+		if(asc==10||desc==10)
 			cout<<"Ordered"<<endl;
 		else
 			cout<<"Unordered"<<endl;
