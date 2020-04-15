@@ -38,10 +38,6 @@ int main(){
 
 	int n, m;
 	scanf("%d", &n);
-	// REP(tc, t){
-	// 	scanf("%d", &n);
-
-	// }
 	if(n%2==0){
 		n=0;
 		cout<<"Mahmoud";
