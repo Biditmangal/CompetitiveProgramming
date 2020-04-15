@@ -15,9 +15,9 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
-
+ 
 using namespace std;
-
+ 
 #define sp system("pause")
 #define FOR(i,a,b) for(int i=a;i<=b;++i)
 #define FORD(i,a,b) for(int i=a;i>=b;--i)
@@ -31,13 +31,14 @@ using namespace std;
 #define ll long long
 #define pii pair<int,int>
 #define MOD 1000000007
-
+ 
 int main(){
-
-	int t, n,flag=-1;
+ 
+	int t, n;
 	scanf("%d", &t);
 	string a;
 	REP(tc, t){
+	    int flag=-1;
 		cin>>n>>a;
 		if(n>=11){
 			REP(i,n){
@@ -50,7 +51,7 @@ int main(){
 		}
 		if(flag!=0 || n<11)
 			cout<<"NO"<<endl;
-
+ 
 	}
 	return 0;
 }
