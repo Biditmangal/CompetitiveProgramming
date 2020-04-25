@@ -42,23 +42,29 @@ int main(){
 	REP(tc, t){
 		cin>>n;
 		cin>>a>>b>>c>>d;
-		int mini= abs(a-b)*n;
-		int maxi= (a+b)*n;
-		int flag=-1;
-		for(int i=mini;i<=maxi;i++){
-
-			if(i>=abs(c-d) && i<=c+d) {
-				cout<<"Yes\n";
-				flag=0;
-				break;
-			}
-			else {
-				continue;
-			}
-		}
-		if(flag!=0){
+		if(n*(a-b)>c+d || n*(a+b)<c-d){
 			cout<<"No\n";
 		}
+		else{
+			cout<<"Yes\n";
+		}
+		// int mini= abs(a-b)*n;
+		// int maxi= (a+b)*n;
+		// int flag=-1;
+		// for(int i=mini;i<=maxi;i++){
+		//
+		// 	if(i>=abs(c-d) && i<=c+d) {
+		// 		cout<<"Yes\n";
+		// 		flag=0;
+		// 		break;
+		// 	}
+		// 	else {
+		// 		continue;
+		// 	}
+		// }
+		// if(flag!=0){
+		// 	cout<<"No\n";
+		// }
 	}
 	return 0;
 }
