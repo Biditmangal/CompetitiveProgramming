@@ -45,8 +45,8 @@ int main(){
 		ll int sum=0;
 		ll int q=max(x-p,y-p);
 		sum=p*b+q*a;
-		int sum1=a*(x+y);
-		int ans=min(sum,sum1);
+		ll int sum1=a*(x+y);
+		ll int ans=min(sum,sum1);
 		cout<<ans<<"\n";
 	}
 	return 0;
