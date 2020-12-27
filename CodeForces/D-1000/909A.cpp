@@ -33,27 +33,33 @@ using namespace std;
 #define MOD 1000000007
 
 //int a[100000];
-int a[2000];
+// int a[2000];
 
 int main(){
-    int i,j;
+    int i=1,j;
     string first, last,login;
 
     cin>>first>>last;
-    int count=0;
-    int length=first.length();
-    login=first[0];
-
-    for(i=1;i<=length;i++){
-        if(first[i]<last[0]){
-            login+=first[i];
-        }
-        else{
-            break;
-        }
+    // int count=1;
+    cout<<first[0];
+    while(i<first.size()&&first[i]<last[0]){
+        cout<<first[i++];
     }
+    cout<<last[0];
+
+    // int length=first.length();
+    // login=first[0];
+
+    // for(i=1;i<=length;i++){
+    //     if(first[i]<last[0]){
+    //         login+=first[i];
+    //     }
+    //     else{
+    //         break;
+    //     }
+    // }
     
-    cout<<login+last[0];
+    // cout<<login+last[0];
 
     return 0;
 }
