@@ -13,5 +13,6 @@ public class BigSum{
       sum=sum.add(temp);
     }
     System.out.println(sum);
+    sc.close();
   }
 }
