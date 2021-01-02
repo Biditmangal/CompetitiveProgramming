@@ -38,15 +38,19 @@ int main(){
     int n;
     int a,b;
     cin>>n;
+
+    //using set of arrays of 2 elements to store the starting and ending time of each movie as a pair.
     set<array<int,2>> s;
 
+    //here inputing start and ending time of each movie and notice that first the ending time is inserted and then starting time 
     FOR(i,0,n){
         cin>>a>>b;
         s.insert({b,a});
     }
 
     int ans=0,last=0;
-    for(array<int,2> i : s){
+    //keeping the track of last movie ending time and then incrementing the ans based on the next movie's starting time.
+    for(array<int,2> i : s){//this is the iterator of type array<int,2> and this will only interate over all the arrays in the set s and we can then directly access the arrays like accessing any other element in the array.
         if(i[1]>=last){
             ans++;
             last=i[0];
@@ -54,6 +58,5 @@ int main(){
     }
     cout<<ans;
     
-
     return 0;
 }
