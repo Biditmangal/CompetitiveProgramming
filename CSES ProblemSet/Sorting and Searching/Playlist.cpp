@@ -37,22 +37,29 @@ const int mxN=2e5;
 
 int main(){
 
-    int n;
+    //in this problem we used a map to keep track of frequency of songs
+    //then loop over all the songs and check if the frequency is 1 then increment the ans by 1
+    //otherwise decrement the frequency of all the songs that occured before it by 1 
+
+    int x,n;
     cin>>n;
     int a[mxN];
+    map<int,int> mp;
 
     FOR(i,0,n){
         cin>>a[i];
     }
-    sort(a,a+n);
-
-    ll x=a[n/2];
-
-    ll ans=0;
-    FOR(i,0,n){
-        ans+=abs(a[i]-x);
+    int ans=0;
+    for(int i=0,j=0;i<n;i++){
+        while(j<n && mp[a[j]]<1){
+            mp[a[j]]++;
+            j++;
+        }
+        ans=max(j-i,ans);
+        mp[a[i]]--;
     }
-    cout<<ans;
+
+    cout<<ans<<endl;
 
     return 0;
 }
