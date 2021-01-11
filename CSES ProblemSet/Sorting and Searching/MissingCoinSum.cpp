@@ -35,41 +35,35 @@ using namespace std;
 
 const int mxN = 2e5;
 
-void solve(){
+int solve(){
     int n;
     cin>>n;
 
-    ll a[n];
-    set<ll> s;
-    set<ll>::iterator it;
+    vector<ll> a(n);
     
     for(int i=0;i<n;i++){
         cin>>a[i];
-        s.insert(a[i]);
     }
 
-    sort(a,a+n);
-    ll sum=0,sum1;
-    
+    sort(a.begin(),a.end());
+    ll ans=1;
 
-    for(int i=0;i<n;i++){
-        sum1=a[i];
-        for(int j=i+1;j<n;j++){
-            sum=a[i]+a[j];
-            sum1+=a[j];
-            s.insert(sum);
-            s.insert(sum1);
-        }
+    if(a[0]!=1){
+        cout<<1<<endl;
+        return 0;
     }
-    ll ans=0;
     
-    for(int i=0;i<s.size();i++){
-        if(s.count(i+1)==0){
-            ans=i+1;
-            break;
+    for(ll i=0;i<n;i++){
+        if(a[i]>ans){
+            cout<<ans<<endl;
+            return 0;
         }
+        ans+=a[i];
     }
+
     cout<<ans<<endl;
+    return 0;
+    
 }
 
 int main(){
