@@ -33,13 +33,13 @@ using namespace std;
 #define pii pair<int,int>
 #define MOD 1000000007
 
-const int mxN = 2e5;
+const int mxN = 3e5;
 
 void solve(){
 
     int n;
     cin>>n;
-    ll a[n];
+    ll a[mxN];
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
