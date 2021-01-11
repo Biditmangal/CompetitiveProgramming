@@ -38,17 +38,30 @@ const int mxN = 2e5;
 void solve(){
     int n;
     cin>>n;
-    int a[n];
+    vector<int> a(mxN);
 
-    FOR(i,0,n){
+    for(int i=0;i<n;i++){
         cin>>a[i];
     }
-    int count=1;
-    for(int i=0;i<n;i++){
-        if(a[i]>a[i+1]){
-            count++;
-            // cout<<i<<" i count "<<count<<endl;
+    
+    //this solution is slow and not effective for large numbers and hence will try to develop a different one.
+
+    int count=0;
+    for(int i=1;i<=n;i++){
+        vector<int>::iterator it,it1;
+        it = find(a.begin(),a.end(),i);
+
+        for(vector<int>::iterator j=it;j!=a.end();j++){
+            it1 = find(j,a.end(),i+1);
+            if(*it1){
+                i=i+1;
+                continue;
+            }
+            else{
+                break;
+            }
         }
+        count++;
     }
     cout<<count<<endl;
 
@@ -57,9 +70,8 @@ void solve(){
 
 int main(){
 
-    int t;
+    int t=1;
     // cin>>t;
-    t=1;
     
     while(t--) solve();
 
