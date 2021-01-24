@@ -44,16 +44,18 @@ void solve()
     }
     else{
         cout<<"YES\n";
-        sum /=2;
         vector<ll> a,b;
 
+        //if the number is odd then we can simply subtract the the highest number from the sum and make sum 0 this will form 2 sets.
         if(n&1){
+            sum /= 2;
             for (ll i = n; i >0; i--){
                     sum>=i ? sum-=i, a.pb(i) : b.pb(i);
             }
         }
+        // if the number is even then each pair of first and last number is of same sum. We can simply put every first and last number alternatively in each set.
         else{
-            int count = 1;
+            int count = 1; // for alternate turns
             for(ll i=1,j=n;i<j;i++,j--){
                 if(count){
                     a.pb(i);
