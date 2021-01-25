@@ -56,6 +56,7 @@ void solve(){
     // }
 
     // this solution is effective and acceptable.
+    
     // in this we first make a pair of numbers and their locations and store them in a vector.
     // then we sort the vector based on the numbers in increasing order.
     // then we compare the number's index with the next number's index in the sorted vector
@@ -103,6 +104,9 @@ void solve(){
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
     int t=1;
     // cin>>t;
