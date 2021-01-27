@@ -45,26 +45,11 @@ void solve()
         cout<<"YES"<<endl;
     }
     else{
-        // if(a>9 || b>9){
-        //     cout<<"YES"<<endl;
-        // }
-        // else{
-        //     cout<<"NO"<<endl;
-        // }
-
-        for(int i=1;i<=a;i++){
-            for(int j=1;j<=b;j++){
-                if(i^j > scoreA){
-                    scoreB=i^j;
-                    break;
-                }
-            }
-        }
-        if(scoreB>scoreA){
-            cout<<"YES"<<endl;
+        if((a&b)==0){
+            cout<<"NO\n";
         }
         else{
-            cout<<"NO\n";
+            cout<<"YES\n";
         }
     }
 }
