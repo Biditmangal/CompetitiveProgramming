@@ -38,26 +38,21 @@ void solve()
 {
     // code goes here...
     int n;
-    cin >> n;
-    int c[mxN + 1];
-
-    for (int i = 0; i < n; i++)
-    {
+    vector<int> c(mxN);
+    cin>>n;
+    FOR(i,0,n){
         int x;
-        cin >> x;
-        ++c[x];
+        cin>>x;
+        c[x]++;
     }
 
-    for (int i = mxN; i; i--)
-    {
-        int d = 0;
-        for (int j = i; j <= mxN; j += i)
-        {
-            d += c[j];
+    FORD(i,mxN,0){
+        int d=0;
+        for(int j=i;j<=mxN;j+=i){
+            d+=c[j];
         }
-        if (d > 1)
-        {
-            cout << i;
+        if(d>1){
+            cout<<i;
             break;
         }
     }
