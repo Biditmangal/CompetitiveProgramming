@@ -37,9 +37,14 @@ const int mxN = 1e6;
 void solve()
 {
     // code goes here...
+
+
+    // in this the idea is to first have the count of all numbers as integers may repeat.
+    // then we start from the last element to and keep a track of its multiples.
+    // the first number to have a multiple will be our answer as we are iterating from last, so this number will definitely be the the maximum one.
     int n;
     cin >> n;
-    int c[mxN + 1];
+    vector<int> c(mxN + 7);
 
     for (int i = 0; i < n; i++)
     {
