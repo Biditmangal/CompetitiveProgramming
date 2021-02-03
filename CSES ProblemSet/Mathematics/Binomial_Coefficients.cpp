@@ -62,7 +62,7 @@ void binomialCoeff()
     invf[1] = 1;
     FOR(i, 2, mxA)
     {
-        invf[i] = MOD - MOD / i * invf[MOD % i] % MOD;
+        invf[i] = MOD - ((MOD / i) * invf[MOD % i]) % MOD; // very complicated proof but understandable : https://cp-algorithms.com/algebra/module-inverse.html
     }
 
     f1[0] = f2[0] = 1;
