@@ -1,5 +1,5 @@
 # Some Important Links for Competitive Programming
 ---
 
-- How to read problem statements by Um_nik  
-https://codeforces.com/blog/entry/62730
+1. [How to read problem statements](https://codeforces.com/blog/entry/62730)  
+2. [Resources on Data Structure and Algorithms](https://codeforces.com/blog/entry/13529)
