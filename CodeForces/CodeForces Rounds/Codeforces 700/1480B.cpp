@@ -42,30 +42,25 @@ void solve()
     vector<pii> mon(n);
     FOR(i, 0, n)
     {
-        cin >> mon[i].second;
+        cin >> mon[i].first;
     }
     FOR(i, 0, n)
     {
-        cin >> mon[i].first;
+        cin >> mon[i].second;
     }
 
     sort(mon.begin(), mon.end());
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n-1; i++)
     {
-        int factor = (mon[i].first + A - 1) / A;
-        int factor2 = (B + mon[i].second - 1) / mon[i].second;
-
-        if (B < 0 || factor > factor2)
-        {
-            cout << "NO\n";
-            return;
-        }
-
-        B -= factor * mon[i].second;
-        // mon[i].first -= factor2 * A;
+        ll factor = (mon[i].second + A - 1ll) / A;
+        B -= factor * mon[i].first;
     }
-    cout << "YES\n";
+    
+    ll factor = (mon[n-1].second - 1ll) / A;
+    B -= factor * mon[n-1].first;
+
+    cout <<(B>0? "YES\n":"NO\n");
 }
 int main()
 {
