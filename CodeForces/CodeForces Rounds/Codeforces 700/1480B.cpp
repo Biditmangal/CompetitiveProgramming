@@ -50,38 +50,22 @@ void solve()
     }
 
     sort(mon.begin(), mon.end());
-    bool ok = false;
 
     for (int i = 0; i < n; i++)
     {
         int factor = (mon[i].first + A - 1) / A;
         int factor2 = (B + mon[i].second - 1) / mon[i].second;
-        B -= factor * mon[i].second;
-        mon[i].first -= factor2 * A;
 
-        if(i==n-1){
-            if (mon[i].first <= 0)
-            {
-                ok = true;
-            }
-            else{
-                ok = false;
-            }
+        if (B < 0 || factor > factor2)
+        {
+            cout << "NO\n";
+            return;
         }
-        else{
-            if (B > 0 && mon[i].first <= 0)
-            {
-                ok = true;
-            }
-            else
-            {
-                ok = false;
-                break;
-            }
-        }
-        
+
+        B -= factor * mon[i].second;
+        // mon[i].first -= factor2 * A;
     }
-    cout << (ok ? "YES\n" : "NO\n");
+    cout << "YES\n";
 }
 int main()
 {
