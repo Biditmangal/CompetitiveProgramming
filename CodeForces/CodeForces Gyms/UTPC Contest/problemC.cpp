@@ -33,32 +33,33 @@ using namespace std;
 #define pii pair<int, int>
 #define MOD 1000000007
 
-const int mxA = 2e6 + 1;
-ll f1[mxA], invf[mxA], f2[mxA];
-void binomialCoeff()
-{
-    invf[1] = 1;
-    FOR(i, 2, mxA)
-    {
-        invf[i] = MOD - ((MOD / i) * invf[MOD % i]) % MOD; // very complicated proof but understandable : https://cp-algorithms.com/algebra/module-inverse.html
-    }
-
-    f1[0] = f2[0] = 1;
-    FOR(i, 1, mxA)
-    {
-        f1[i] = f1[i - 1] * i % MOD;
-        f2[i] = f2[i - 1] * invf[i] % MOD;
-    }
-}
 void solve()
 {
     // code goes here...
-    binomialCoeff();
-    int n,m;
-    cin>>n>>m;
-    ll ans = f1[n+m-1]*f2[m]%MOD*f2[n-1]%MOD;
-    cout<<ans<<endl;
+    int r,c;
+    cin>>r>>c;
 
+    char a[r][c]={};
+
+    FOR(i,0,r){
+        FOR(j,0,c){
+            cin>>a[i][j];
+        }
+    }
+
+    FOR(i, 0, r)
+    {
+        FOR(j, 0, c)
+        {
+            if(a[i][j]=='W'){
+                if(a[i-1][j]=='P'|| a[i+1][j]=='P'|| a[i][j-1]=='P'|| a[i][j+1]=='P'){
+                    cout<<"No\n";
+                    return;
+                }
+            }
+        }
+    }
+    cout<<"Yes\n";
 }
 int main()
 {

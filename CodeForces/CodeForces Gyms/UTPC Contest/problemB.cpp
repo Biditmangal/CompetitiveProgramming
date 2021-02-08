@@ -33,21 +33,35 @@ using namespace std;
 #define pii pair<int, int>
 #define MOD 1000000007
 
-const int mxA = 2e6+1;
 void solve()
 {
     // code goes here...
-    int n;
-    cin>>n;
-    ll dp[n+1];
+    int n,k;
+    cin>>n>>k;
+    int ans =0;
+    bool ok = false;
+    int a[n];
+    // FOR(i,0,n){
+    //     cin>>a[i];
+    // }
 
-    dp[1]=0;
-    dp[2]=1;
-
-    FOR(i,3,n+1){
-        dp[i] = ((i-1)*(dp[i-1]+dp[i-2]))%MOD;
+    FOR(i,0,n){
+        int x;
+        cin>>x;
+        k-=x;
+        ans++;
+        
+        if(k<=0){
+            ok = true;
+            break;
+        }
     }
-    cout<<dp[n];
+    if(ok){
+        cout<<ans<<endl;
+    }
+    else{
+        cout<<-1<<endl;
+    }
 }
 int main()
 {
