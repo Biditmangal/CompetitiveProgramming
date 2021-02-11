@@ -36,28 +36,16 @@ using namespace std;
 void solve()
 {
     // code goes here...
-    int n, m, p;
-    cin >> n >> m >> p;
-
-    if (n > m)
+    int m, n;
+    cin >> n >> m;
+    ll ans = 0;
+    for (int d = 1;; d++)
     {
-        int c = n;
-        n = m;
-        m = c;
+        if (n - ((m - 1) * d + 1) + 1 <= 0)
+            break;
+        ans += n - ((m - 1) * d + 1) + 1;
     }
-
-    for (int i = 1; i * i <= p; i++)
-    {
-        if (p % i == 0)
-        {
-            if (i <= n && p / i <= m)
-            {
-                cout << "YES\n";
-                return;
-            }
-        }
-    }
-    cout << "NO\n";
+    cout << ans << endl;
 }
 int main()
 {
@@ -67,7 +55,7 @@ int main()
     cout.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
 

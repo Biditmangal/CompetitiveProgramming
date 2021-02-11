@@ -32,32 +32,34 @@ using namespace std;
 #define ll long long
 #define pii pair<int, int>
 #define MOD 1000000007
-
+const int mxA = 1e5;
 void solve()
 {
     // code goes here...
-    int n, m, p;
-    cin >> n >> m >> p;
+    int n;
+    string s;
+    cin>>n>>s;
 
-    if (n > m)
-    {
-        int c = n;
-        n = m;
-        m = c;
-    }
+    int dp[n+1][s.length()+n+1]={};
 
-    for (int i = 1; i * i <= p; i++)
-    {
-        if (p % i == 0)
-        {
-            if (i <= n && p / i <= m)
-            {
-                cout << "YES\n";
-                return;
+    FOR(i,1,n+1){
+        FOR(j,1,s.length()+n+1){
+            if(j==s.length()+i){
+                dp[i][j]=1;
             }
+            else{
+                dp[i][j]=dp[i][j+1]+dp[i-1][j+1];
+            }
+            cout<<dp[i][j]<<" ";
         }
+        cout<<endl;
     }
-    cout << "NO\n";
+
+    // ll ans = 0;
+    // FOR(i,1,n+1){
+    //     ans+=dp[i][1];
+    // }
+    // cout<<ans<<endl;
 }
 int main()
 {
@@ -67,7 +69,7 @@ int main()
     cout.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
 

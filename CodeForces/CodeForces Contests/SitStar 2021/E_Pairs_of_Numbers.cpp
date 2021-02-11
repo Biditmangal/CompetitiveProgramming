@@ -36,28 +36,31 @@ using namespace std;
 void solve()
 {
     // code goes here...
-    int n, m, p;
-    cin >> n >> m >> p;
+    ll x, y;
+    cin >> x >> y;
+    ll ans = 0;
 
-    if (n > m)
+    while (x && y)
     {
-        int c = n;
-        n = m;
-        m = c;
-    }
-
-    for (int i = 1; i * i <= p; i++)
-    {
-        if (p % i == 0)
+        if (x > y)
         {
-            if (i <= n && p / i <= m)
-            {
-                cout << "YES\n";
-                return;
-            }
+            ans += x / y;
+            x %= y;
+        }
+        else
+        {
+            ans += y / x;
+            y %= x;
         }
     }
-    cout << "NO\n";
+    if (x == 1 || y == 1)
+    {
+        cout << ans - 1 << endl;
+    }
+    else
+    {
+        cout << -1 << endl;
+    }
 }
 int main()
 {
