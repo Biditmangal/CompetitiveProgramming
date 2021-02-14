@@ -78,11 +78,15 @@ void prodOfDivisors()
     ll N = 1;
     for (int i = 0; i < n; i++)
     {
-        N *= modpow(factors[i], c[i], MOD);
-        N %= MOD;
+        // N *= modpow(factors[i], c[i], MOD);
+        // N*=factors[i]*c[i];
     }
-    ans = modpow(N, (num + 1) / 2, MOD);
-    cout << (num % 2 != 0 ? modpow(N, (num + 1) / 2, MOD) % MOD : modpow(N, num / 2, MOD) % MOD);
+    // cout<<N<<endl;
+    ans = (num % 2 != 0 ? modpow(N, (num + 1) / 2, MOD) : modpow(N, num / 2, MOD));
+
+    cout << ans << endl;
+
+    // cout << ans << endl;
 }
 void solve()
 {
