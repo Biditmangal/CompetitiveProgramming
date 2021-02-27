@@ -35,39 +35,46 @@ using namespace std;
 
 void solve()
 {
-    // code goes here...
     // TODO
-    int n, q;
-    cin >> n >> q;
-    vector<ll> mini(n + 1);
-    ll mid = MOD;
+    int n;
+    cin >> n;
+    int a[n + 1];
     FOR(i, 1, n + 1)
     {
-        ll x;
-        cin >> x;
-        // mid=min(mid,x);
-        // mini[i] = mid;
-        mini[i]=x;
+        cin >> a[i];
     }
 
-    while (q--)
+    int dp[n + 1];
+    dp[n] = 1;
+    FORD(i, n - 1, 0)
     {
-        int i, j;
-        cin >> i >> j;
-        ll *il;
-        il = min_element(i,j);
-        cout<<*il<<endl;
+        if ((a[i] ^ a[i + 1]) >= 0)
+        {
+            dp[i] = 1;
+        }
+        else
+        {
+            dp[i] = dp[i + 1] + 1;
+        }
     }
-} 
+
+    FOR(i, 0, n)
+    {
+        cout << dp[i + 1] << " ";
+    }
+    cout << endl;
+}
 int main()
 {
 
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdouw);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
         solve();
 
