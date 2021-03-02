@@ -34,192 +34,93 @@ using namespace std;
 #define MOD 1000000007
 #define INT_MAX 2147483647
 
+bool check_balanced(ll n, string &s)
+{
+    stack<char> st;
+    bool ok = true;
+    for (ll i = 0; i < n; i++)
+    {
+        if (s[i] == '(')
+        {
+            st.push('(');
+        }
+        else
+        {
+            if (!st.empty())
+            {
+                st.pop();
+            }
+            else
+            {
+                ok = false;
+                break;
+            }
+        }
+    }
+    if (!st.empty())
+    {
+        ok = false;
+    }
+    return ok;
+}
 void solve()
 {
     //code goes here...
     string s;
     cin >> s;
-    int cnt[3] = {0};
-    FOR(i, 0, s.length() - 1)
-    {
-        if (s[i] == 'A')
-            cnt[0]++;
-        else if (s[i] == 'B')
-            cnt[1]++;
-        else
-            cnt[2]++;
-    }
-    bool ans = 0;
-    char cpush, cpop, cmid;
-    cpush = s[0];
-    cpop = s[s.length() - 1];
-    if (cpop == cpush)
+    ll n = s.size();
+    string res = s;
+    char start = s[0], end = s[n - 1];
+    if (start == end)
     {
         cout << "NO\n";
         return;
     }
-    stack<char> stk;
-
-    if (cpush == 'A' && cpop == 'B' || cpush == 'B' && cpop == 'A')
+    for (ll i = 0; i < n; i++)
     {
-        cmid = 'C';
-        if (cnt[0] == cnt[1] && cnt[2] == 0)
+        if (s[i] == start)
         {
-            ans = 1;
+            res[i] = '(';
         }
-        else if (cnt[0] + cnt[2] == cnt[1])
+        else if (s[i] == end)
         {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush || s[i] == cmid)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
-        }
-        else if (cnt[1] + cnt[2] == cnt[0])
-        {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
+            res[i] = ')';
         }
         else
         {
-            ans = 0;
+            res[i] = '(';
         }
     }
-    if (cpush == 'B' && cpop == 'C' || cpush == 'C' && cpop == 'B')
+    bool ok = check_balanced(n, res);
+    if (ok)
     {
-        cmid = 'A';
-
-        if (cnt[2] == cnt[1] && cnt[0] == 0)
+        cout << "YES\n";
+        return;
+    }
+    for (ll i = 0; i < n; i++)
+    {
+        if (s[i] == start)
         {
-            ans = 1;
+            res[i] = '(';
         }
-        else if (cnt[0] + cnt[2] == cnt[1])
+        else if (s[i] == end)
         {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush || s[i] == cmid)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
-        }
-        else if (cnt[1] + cnt[0] == cnt[2])
-        {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
+            res[i] = ')';
         }
         else
         {
-            ans = 0;
+            res[i] = ')';
         }
     }
-    if (cpush == 'A' && cpop == 'C' || cpush == 'C' && cpop == 'A')
+    ok = check_balanced(n, res);
+    if (ok)
     {
-        cmid = 'B';
-
-        if (cnt[0] == cnt[2] && cnt[1] == 0)
-        {
-            ans = 1;
-        }
-        else if (cnt[0] + cnt[1] == cnt[2])
-        {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush || s[i] == cmid)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
-        }
-        else if (cnt[1] + cnt[2] == cnt[0])
-        {
-            ans = 1;
-            FOR(i, 0, s.length() - 1)
-            {
-                if (s[i] == cpush)
-                {
-                    stk.push(s[i]);
-                }
-                else
-                {
-                    if (stk.empty())
-                    {
-                        ans = 0;
-                        break;
-                    }
-                    stk.pop();
-                }
-            }
-        }
-        else
-        {
-            ans = 0;
-        }
+        cout << "YES\n";
     }
-
-    cout << (ans ? "YES\n" : "NO\n");
+    else
+    {
+        cout << "NO\n";
+    }
 }
 int main()
 {
