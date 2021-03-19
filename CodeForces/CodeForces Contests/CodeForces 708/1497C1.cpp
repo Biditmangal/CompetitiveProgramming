@@ -34,32 +34,23 @@ using namespace std;
 #define MOD 1000000007
 #define INT_MAX 2147483647
 
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
 void solve()
 {
     //code goes here...
-    int n, m;
-    cin >> n >> m;
-    map<int, int> cnt;
-    while (n--)
-    {
-        int x;
-        cin >> x;
-        cnt[x % m]++;
-    }
-    int ans = 0;
-    for (auto &c : cnt)
-    {
-        if (c.first == 0)
-            ans++;
-        else if (2 * c.first == m)
-            ans++;
-        else if (2 * c.first < m || cnt.find(m - c.first) == cnt.end())
-        {
-            int x = c.second, y = cnt[m - c.first];
-            ans += 1 + max(0, abs(x - y) - 1);
-        }
-    }
-    cout << ans << endl;
+    int n, k;
+    cin >> n >> k;
+    if (n % 2)
+        cout << 1 << ' ' << n / 2 << ' ' << n / 2 << '\n';
+    else if (n % 2 == 0 && n % 4)
+        cout << 2 << ' ' << n / 2 - 1 << ' ' << n / 2 - 1 << '\n';
+    else
+        cout << n / 2 << ' ' << n / 4 << ' ' << n / 4 << '\n';
 }
 int main()
 {

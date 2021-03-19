@@ -34,37 +34,22 @@ using namespace std;
 #define MOD 1000000007
 #define INT_MAX 2147483647
 
-int gcd(int a, int b)
-{
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-}
 void solve()
 {
     //code goes here...
-    int n, k;
-    cin >> n >> k;
-    int a1, a2;
+    int n, a, b;
+    cin >> n >> a >> b;
+    int w, x;
+    cin >> w >> x;
 
-    if (n % 3 == 0)
-    {
-        a1 = a2 = n / 3;
-        cout << a1 << " " << a2 << " " << a1 << endl;
-        return;
-    }
-    a1 = n / 3;
-    a2 = n - 2 * a1;
+    int k = min(a, b);
+    int kmax = max(a, b);
+    bool ans = 1;
 
-    if (((a1 * a2) / gcd(a1, a2)) > n / 2)
-    {
-        a1 = n - 2 * a2;
-        cout << a1 << " " << a2 << " " << a2 << endl;
-    }
-    else
-    {
-        cout << a1 << " " << a1 << " " << a2 << endl;
-    }
+    if (w - ((k+kmax)/2) > 0 || x - (n-kmax + ((kmax - k) / 2)) > 0)
+        ans = 0;
+
+    cout << (ans ? "YES" : "NO") << "\n";
 }
 int main()
 {
